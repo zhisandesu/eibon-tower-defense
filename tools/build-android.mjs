@@ -19,7 +19,8 @@ run(java('javac'),['-encoding','UTF-8','--release','8','-classpath',androidJar,'
 run(java('jar'),['--create','--file',path.join(build,'classes.jar'),'-C',path.join(build,'classes'),'.']);
 run(java('java'),['-cp',path.join(sdkTools,'lib/d8.jar'),'com.android.tools.r8.D8','--release','--min-api','28','--lib',androidJar,'--output',path.join(build,'dex'),path.join(build,'classes.jar')]);
 run(java('jar'),['--update','--file',path.join(build,'unsigned.apk'),'-C',path.join(build,'dex'),'classes.dex']);
-run(path.join(sdkTools,'zipalign.exe'),['-f','-p','4',path.join(build,'unsigned.apk'),path.join(build,'aligned.apk')]);
+run('powershell.exe',['-NoProfile','-ExecutionPolicy','Bypass','-File',path.join(root,'tools/normalize-apk.ps1'),'-Source',path.join(build,'unsigned.apk'),'-Destination',path.join(build,'normalized.apk')]);
+run(path.join(sdkTools,'zipalign.exe'),['-f','-p','4',path.join(build,'normalized.apk'),path.join(build,'aligned.apk')]);
 await fs.mkdir(signDir,{recursive:true});const credentials=path.join(signDir,'credentials.json');let secret;
 try{secret=JSON.parse(await fs.readFile(credentials,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;secret={alias:'eibon-release',password:randomBytes(32).toString('hex')};await fs.writeFile(credentials,JSON.stringify(secret),{mode:0o600});}
 const keystore=path.join(signDir,'eibon-release.jks'),env={...process.env,EIBON_STORE_PASS:secret.password};
