@@ -57,7 +57,7 @@
 
 ## 壁纸版说明
 
-GitHub 的 ZIP 是完整、可导入的 3.0 壁纸项目。更新自己已有的工坊作品时，请保留原项目的工坊编号，在 Wallpaper Engine 编辑器中提交更新。GitHub 发布和 Steam 工坊发布各自独立。
+[Steam 创意工坊作品](https://steamcommunity.com/sharedfiles/filedetails/?id=3811312531) 已同步更新到 3.0，可直接订阅或更新已有订阅。GitHub 的 ZIP 是完整、可导入的 3.0 壁纸项目。更新自己已有的工坊作品时，请保留原项目的工坊编号，在 Wallpaper Engine 编辑器中提交更新。GitHub 发布和 Steam 工坊发布各自独立。
 
 ## 开发与构建
 
