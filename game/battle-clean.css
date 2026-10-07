@@ -1,0 +1,186 @@
+/* Battle-only recreation of the selected 1672 × 941 reference. */
+.app{overflow:hidden}
+.app .dashboard{left:0;right:0;top:2.65cqh;height:5.7cqh;min-height:0;padding:0}
+.app .dashboard .status,.app .shift-clock,.app .dashboard .icon-button,.app .dashboard .square-button{border:0;border-radius:0;box-shadow:none;color:#493859;background:transparent;background-repeat:no-repeat;transform:none;backdrop-filter:none}
+.app .dashboard .status{top:0;height:100%;padding:0 1.1cqw;gap:.5cqw;justify-content:center}
+.app .dashboard .money{left:2.4cqw;width:17.6cqw;background-image:url('assets/pop-ui-v2/battle-money-natural.png');background-size:116.656% 313.869%;background-position:50.192% 50%}
+.app .dashboard .life{left:21.55cqw;width:10.5cqw;background-image:url('assets/pop-ui-v2/battle-life-natural.png');background-repeat:no-repeat;background-size:112.799% 151.625%;background-position:50.222% 50%}
+.app .status small,.app .status strong{font-family:"Microsoft YaHei",sans-serif;font-size:3.15cqh;font-weight:900;line-height:1;letter-spacing:-.03em}
+.app .status .fons-image{width:3.8cqw;height:3.9cqh;transform:scale(2.1);margin-right:.3cqw;object-fit:contain}
+.app .status.life>img{width:4.2cqh;height:4.2cqh}
+.app .shift-clock{top:0;left:41.15cqw;width:25.45cqw;height:100%;padding:0 1cqw;overflow:hidden;background-image:url('assets/pop-ui-v2/battle-wave-natural.png');background-size:107.016% 307.364%;background-position:50% 49.533%}
+.app .dashboard .wave-box{background:none;box-shadow:none;border:0;padding:0;width:53%;min-width:0}
+.app .wave-box strong{font-size:3.1cqh;font-weight:900;font-style:normal;color:#493859}
+.app .dashboard .battle-time{background:none;box-shadow:none;border:0;width:47%;padding:0;gap:.7cqw;font-size:3.1cqh;font-weight:900;color:#493859}
+.app .battle-time img{width:3.8cqh;height:3.8cqh;filter:none}
+.app .dashboard .battle-controls{top:0;right:1.4cqw;height:100%;gap:1.1cqw;transform:none}
+.app .dashboard .icon-button{width:5.45cqw;height:100%;min-width:0;padding:1.05cqh 1.55cqw;background-image:url('assets/pop-ui-v2/battle-button-natural.png');background-size:106.161% 114.498%;background-position:49.451% 46.457%}
+.app .dashboard .icon-button img{width:100%;height:100%;object-fit:contain;filter:none}
+.app .dashboard .square-button{width:8.1cqw;height:91%;align-self:center;padding:0 .7cqw;font-size:3.05cqh;font-weight:900;gap:.2cqw;background-image:url('assets/pop-ui-v2/battle-speed-natural.png');background-size:111.819% 123.317%;background-position:50.233% 49.664%}
+.app .dashboard .square-button>img{width:3.7cqh;height:3.7cqh;filter:none}
+.app .dashboard button:focus-visible,.app #supply-button:focus-visible{outline:2px solid #5821be;outline-offset:2px}
+.app .deployment{left:1.05cqw;right:1.4cqw;bottom:2cqh;height:18.5cqh;padding:0;gap:.65cqw;display:flex;align-items:stretch;background:none;box-shadow:none}
+.app .deployment::before{display:none}
+.app .deployment .cards{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:.55cqw;flex:1;min-width:0;overflow:visible}
+.app .deployment .unit-card{width:100%;height:100%;min-width:0;padding:0;flex:none;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/pop-ui-v2/battle-card-natural.png') 50% 45.802%/113.696% 110.38% no-repeat;overflow:hidden}
+.app .deployment .unit-card::after,.app .deployment .tool-card::after{display:none}
+.app .deployment .unit-card .avatar-window{position:absolute;left:3.5%;right:3.5%;width:93%;top:3%;height:58.5%;min-height:0;background:transparent;overflow:hidden;border-radius:7px 7px 2px 2px}
+.app .deployment .unit-card .avatar-window .portrait{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;object-position:50% 50%;transform:none}
+.app .deployment .unit-card .card-details{position:absolute;left:6%;right:6%;width:88%;top:66%;height:29%;display:grid;grid-template-rows:1fr 1fr;background:none;box-shadow:none}
+.app .deployment .card-details strong{font-size:2.12cqh;line-height:1.1;font-weight:900;color:#3b2c4c}
+.app .deployment .unit-card .card-cost{font-size:2.35cqh;line-height:1;color:#3b2c4c;gap:.35cqw;background:none}
+.app .deployment .card-cost .cost-fons{width:2cqw;height:2.2cqh;transform:scale(1.25)}
+.app .deployment .card-cost .attribute-icon{right:0;top:-4.6cqh;width:2.1cqh;height:2.1cqh;padding:.15cqh;background:#33274de8;border:0;border-radius:50%}
+.app .deployment .card-key{top:4%;left:7%;z-index:5;min-width:1.55cqh;padding:.05cqh .25cqw;background:#78638e;color:#fff;font-size:1.85cqh;line-height:1.15;border-radius:3px;font-weight:900}
+.app .deployment .unit-card.selected{filter:drop-shadow(0 0 2px #09cbed)}
+.app .deployment .cooldown-cover{inset:auto 4% 3%;background:#37205288;border-radius:5px;transform:none}
+.app .deployment .cooldown-text{top:30%;font-size:3cqh}
+.app .deployment .tool-cards{position:relative;flex:0 0 8.1cqw;width:8.1cqw;display:block;height:100%;padding:0}
+.app .deployment .tool-card{position:relative;display:block;width:100%;height:100%;border:0;border-radius:0;padding:0;background:transparent url('assets/pop-ui-v2/battle-tool-natural.png') 50% 50.36%/109.126% 110.174% no-repeat;box-shadow:none;overflow:hidden}
+.app .deployment .tool-art{left:8%;right:8%;width:84%;top:8%;height:61%;border:0;background:none;box-shadow:none}
+.app .deployment .tool-card .tool-symbol{width:72%;height:78%;object-fit:contain;filter:none}
+.app .deployment .tool-caption{left:6%;right:6%;width:88%;top:77%;height:16%;background:none;box-shadow:none;text-shadow:none}
+.app .deployment .tool-caption strong{font-size:2.7cqh;font-weight:900;line-height:1.1}
+.app #battle-items{position:absolute;left:0;right:0;bottom:calc(100% + 1.15cqh);width:100%;min-width:0;max-width:none;height:4.6cqh;padding:0;display:block}
+.app #supply-button{width:100%;height:100%;min-height:0;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/pop-ui-v2/battle-life-natural.png') 50.222% 50%/112.799% 151.625% no-repeat;color:#493859;font-size:2.25cqh;font-weight:900}
+.app .info-strip{position:absolute;display:flex;left:24.4cqw;right:24.4cqw;bottom:23.55cqh;top:auto;width:auto;height:4.8cqh;min-height:0;max-width:none;transform:none;padding:0 1.9cqw;gap:1.1cqw;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/pop-ui-v2/battle-info-natural.png') 51.923% 50%/105.422% 748.077% no-repeat;color:#574363;z-index:4;font-size:1.68cqh;line-height:1.4;overflow:hidden;pointer-events:none}
+.app .info-strip strong{font-size:2.15cqh;font-weight:900;color:#493859;flex-shrink:0}
+.app .info-strip #selected-description{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app .info-strip #selected-dot,.app .info-strip kbd{display:none}
+.app #conveyor{flex:1;min-width:0;padding:0}
+.app .conveyor-heading{position:absolute;left:0;bottom:calc(100% + .5cqh);height:2.7cqh;min-height:0;margin:0;color:#321463;font-size:1.2cqh;padding:0 .5cqw;background:#fffdf4df;border-radius:3px}
+.app #conveyor-cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:100%;gap:.55cqw;overflow:visible}
+.app .conveyor-card{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;height:100%;min-width:0;min-height:0;padding:.75cqh 1cqw 1.15cqh;gap:.25cqh;background:transparent url('assets/pop-ui-v2/battle-queue-natural.png') 53.659% 47.561%/102.855% 108.342% no-repeat;border:0;box-shadow:none;color:#493859;overflow:hidden}
+.app .conveyor-card>img{position:absolute;left:22%;top:3%;width:56%;height:59%;object-fit:cover;border-radius:7px;min-height:0}
+.app .conveyor-card strong{position:absolute;top:67%;left:4%;width:92%;font-size:2cqh;line-height:1.2;color:#493859;flex-shrink:0}
+.app .conveyor-card small{position:absolute;top:83%;left:4%;width:92%;font-size:1.35cqh;line-height:1.2;color:#786087;flex-shrink:0}
+.app .conveyor-card.empty{opacity:.5;justify-content:center}
+.app .queue-item-art{position:absolute;left:8%;top:3%;width:84%;height:59%;min-height:0;background:none;display:block}
+.app .queue-item-art .product-picture{width:100%;height:100%;object-fit:contain}
+.app #supply-panel{right:1.4cqw;bottom:27cqh;width:250px;max-height:55cqh;overflow-y:auto;padding:22px;box-shadow:0 8px 25px #24104430;z-index:20}
+.app #item-slots{display:flex;flex-direction:column;justify-content:flex-start;gap:4px;flex:none;margin:5px 0 9px;max-height:20cqh;overflow-y:auto}
+.app #supply-panel button,.app #preparation-panel button{background:transparent url('assets/pop-ui-v2/shop-action.png') center/108% 265% no-repeat;color:#fff;min-height:38px;padding:9px 16px;border:0;box-shadow:none}
+.app #supply-panel .item-slot{font-size:12px;padding:8px 16px;min-height:32px!important;flex-shrink:0}
+.app #supply-panel .item-slot strong{font-size:13px}
+.app #prep-cashout{color:#ffe79b}
+.app .stage-hint{display:none}
+.app .toast{bottom:29.5cqh}
+.app #preparation-panel{bottom:27cqh}
+#run-status{position:fixed;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);pointer-events:none}
+
+/* Secondary battle surfaces use the existing blank material as a nine-slice.
+   Corners and rims keep their proportions as live content changes size. */
+.app .toast,.app .boss-banner,.app .boss-meter,.app .boss-cast-warning,.app #terrain-alert,.app #environment-intel,.app #supply-panel,.app #preparation-panel,.app .lane-buff,#drag-ghost span{background:none;border:14px solid transparent;border-image:url('assets/pop-ui-v2/battle-button-natural.png') 150 120 155 120 fill / 14px / 0 stretch;border-radius:0;box-shadow:none;backdrop-filter:none;color:#493859;text-shadow:none}
+.app .toast{bottom:29.5cqh;min-width:18cqw;max-width:60cqw;padding:.5cqh 1.1cqw;font-size:1.9cqh;font-weight:800;line-height:1.4;text-align:center}
+.app .boss-banner{min-width:33cqw;max-width:60cqw;padding:2.3cqh 2.2cqw;gap:.7cqh;line-height:1.35}
+.app .boss-banner small{font-size:1.5cqh;color:#756281}
+.app .boss-banner strong{font-size:3.5cqh;font-style:normal;color:#493859}
+.app .boss-banner span{font-size:1.6cqh;color:#64546f}
+.app .boss-meter{top:10.4cqh;width:44cqw;padding:.1cqh .4cqw;gap:.35cqh}
+.app .boss-meter>.boss-heading{padding:0 .35cqw;color:#493859;text-shadow:none;font-size:1.7cqh}
+.app .boss-meter #boss-phase{color:#756281}
+.app .boss-meter #boss-percent{color:#493859}
+.app .boss-meter>.boss-health-track{height:1.1cqh;min-height:0;border:0;border-radius:4px;background:#b6a9c5;box-shadow:none}
+.app .boss-meter .boss-health-track i{height:100%;background:#8d739f;border:0;border-radius:4px;box-shadow:none}
+.app .boss-meter>.boss-cast-warning{left:calc(100% + 1cqw);top:-.1cqh;right:auto;bottom:auto;max-width:19cqw;min-height:4cqh;padding:.2cqh .4cqw;gap:.4cqw;font-size:1.5cqh;color:#6d3d61}
+.app .boss-meter small{color:#756281}
+.app #terrain-alert{max-width:28cqw;padding:.6cqh .8cqw;font-size:1.6cqh;color:#6d3d61}
+.app #environment-intel{padding:9px 15px;width:320px}
+.app #environment-intel strong{font-size:13px;color:#493859}
+.app #environment-intel span{font-size:11px;color:#64546f}
+.app #environment-intel small{font-size:10px;color:#756281}
+.app #supply-panel{padding:12px 14px;gap:7px}
+.app #supply-panel>strong{color:#493859;font-size:18px;font-style:normal}
+.app #supply-panel small{color:#756281}
+.app #preparation-panel{padding:16px 20px;scrollbar-color:#9d8cae #e7e2ef}
+.app #preparation-panel h3{font-size:25px;font-style:normal;color:#493859}
+.app #preparation-panel small,.app #next-environment{color:#756281}
+.app #swap-note{color:#64546f}
+.app #preparation-panel .swap-row select{color:#493859;border-color:#a799b7;border-radius:5px;background:#f4f0f8}
+.app #supply-panel button,.app #preparation-panel button{background:none;border:9px solid transparent;border-image:url('assets/pop-ui-v2/battle-button-natural.png') 150 120 155 120 fill / 9px / 0 stretch;color:#493859;padding:3px 7px;min-height:38px;box-shadow:none}
+.app #supply-panel .item-slot{padding:2px 7px}
+.app #supply-panel .item-slot strong{color:#493859}
+.app #preparation-panel #collapse-prep{min-height:32px;padding:0 6px}
+.app #preparation-panel #prep-cashout{color:#6d3d61}
+.app .conveyor-heading{background:none;border:9px solid transparent;border-image:url('assets/pop-ui-v2/battle-button-natural.png') 150 120 155 120 fill / 9px / 0 stretch;height:3cqh;padding:0 .4cqw;color:#64546f}
+.app .lane-buff-group{font-size:11px;gap:3px}
+.app .lane-buff{display:flex;align-items:center;gap:4px;width:max-content;height:26px;min-height:0;padding:0 5px;border-width:8px;border-image-width:8px;font-weight:800;white-space:nowrap}
+.app .lane-buff>span:last-child{font-size:11px;color:#493859}
+.app .lane-buff .lane-buff-icons{position:static;display:flex;gap:2px;height:auto;max-width:none;align-items:center}
+.app .lane-buff .attribute-icon{width:12px;height:12px;min-width:12px;min-height:12px}
+#drag-ghost span{border-width:9px;border-image-width:9px;padding:2px 6px;color:#493859}
+#drag-ghost.invalid span{background:none;color:#8b496a}
+
+/* Keep the ten-card row and HUD compact in a narrow window without rearranging. */
+.app{--battle-card-height:min(18.5cqh,10.45cqw);--battle-hud-height:min(5.7cqh,3.22cqw)}
+.app .dashboard{height:var(--battle-hud-height)}
+.app .deployment{height:var(--battle-card-height)}
+.app .status small,.app .status strong{font-size:min(3.15cqh,1.78cqw)}
+.app .wave-box strong,.app .dashboard .battle-time{font-size:min(3.1cqh,1.75cqw)}
+.app .dashboard .square-button{font-size:min(3.05cqh,1.72cqw)}
+.app .dashboard .square-button>img{width:min(3.7cqh,2.09cqw);height:min(3.7cqh,2.09cqw)}
+.app .status.life>img{width:min(4.2cqh,2.37cqw);height:min(4.2cqh,2.37cqw)}
+.app .battle-time img{width:min(3.8cqh,2.15cqw);height:min(3.8cqh,2.15cqw)}
+.app .status .fons-image{height:min(3.9cqh,2.2cqw)}
+.app .deployment .card-cost .attribute-icon{width:min(2.1cqh,1.19cqw);height:min(2.1cqh,1.19cqw);top:calc(-.249 * var(--battle-card-height))}
+.app .deployment .card-cost .cost-fons{height:min(2.2cqh,1.25cqw)}
+.app #battle-items{height:min(4.6cqh,2.6cqw)}
+.app #supply-button{font-size:min(2.25cqh,1.27cqw)}
+.app .deployment .card-details strong{font-size:min(2.12cqh,1.2cqw)}
+.app .deployment .unit-card .card-cost{font-size:min(2.35cqh,1.33cqw)}
+.app .deployment .card-key{font-size:min(1.85cqh,1.05cqw)}
+.app .deployment .tool-caption strong{font-size:min(2.7cqh,1.53cqw)}
+.app .info-strip{bottom:calc(var(--battle-card-height) + 5.05cqh)}
+.app .toast{bottom:calc(var(--battle-card-height) + 6.6cqh);min-width:0;max-width:48cqw;border-width:9px;border-image-width:9px;padding:.15cqh .65cqw;font-size:min(1.55cqh,.88cqw);line-height:1.3}
+.app #environment-intel{width:min(320px,29cqw)}
+/* Quiet boss information leaves the board visible; red is reserved for health. */
+.app .boss-meter{top:10.5cqh;width:38cqw;border:0;border-image:none;border-radius:0;background:none;padding:0;gap:.45cqh;box-shadow:none}
+.app .boss-meter>.boss-heading{padding:0 .15cqw;font-size:1.55cqh;font-weight:800;color:#3e3049;text-shadow:0 1px 2px #fffdf3}
+.app #boss-meter-name::before{content:'';display:inline-block;width:.6cqh;height:.6cqh;margin-right:.5cqw;border-radius:50%;background:#ca4a51;vertical-align:middle}
+.app .boss-meter #boss-phase{font-size:1.3cqh;color:#685a70}
+.app .boss-meter #boss-percent{font-variant-numeric:tabular-nums;color:#923c46}
+.app .boss-meter>.boss-health-track{height:.95cqh;background:#44293626;border:1px solid #fff9edb3;border-radius:20px;box-shadow:inset 0 1px 2px #3e183b25;overflow:hidden}
+.app .boss-meter .boss-health-track i{background:linear-gradient(180deg,#ef777c 0%,#db515b 55%,#bd3e4d 100%);border:0;border-radius:20px;box-shadow:inset 0 1px 0 #ffbbb27d;transition:width .15s linear}
+.app .boss-meter>.boss-cast-warning{position:relative;left:auto;top:auto;right:auto;bottom:auto;justify-self:center;max-width:35cqw;min-height:0;border:1px solid #da66706b;border-image:none;border-radius:20px;background:#fff7edea;box-shadow:none;padding:.25cqh .7cqw;font-size:1.35cqh;color:#a43f50}
+.app .boss-banner{top:16cqh;transform:translate(-50%,0);min-width:0;max-width:35cqw;border-width:9px;border-image-width:9px;padding:.4cqh 1cqw;gap:.25cqh}
+.app .boss-banner small{font-size:1.1cqh}.app .boss-banner strong{font-size:2.25cqh}.app .boss-banner span{font-size:1.3cqh}
+.app #environment-intel{top:10.5cqh;left:1.5cqw;width:25cqw;border:1px solid #a88aaa4d;border-left:3px solid var(--environment-color);border-image:none;border-radius:7px;background:#fffaf0e8;padding:.65cqh .8cqw;box-shadow:0 2px 6px #40213b0a}
+.app #environment-intel strong{font-size:1.55cqh}.app #environment-intel span{font-size:1.25cqh;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.3cqh 0}.app #environment-intel small{font-size:1.2cqh;color:#876591}
+#endless-intel,#lesson-intel{position:absolute;top:10.5cqh;z-index:4;width:25cqw;background:#fffaf0e8;color:#493859;border:1px solid #a88aaa4d;border-radius:7px;padding:.65cqh .8cqw;box-shadow:0 2px 6px #40213b0a}
+#endless-intel{right:1.5cqw;width:26cqw}#lesson-intel{left:1.5cqw}
+#toggle-forecast{display:flex;justify-content:space-between;gap:1cqw;width:100%;border:0;background:none;padding:0;color:#493859;font-weight:800;font-size:1.4cqh}
+#toggle-forecast span{font-weight:400;font-size:1.15cqh;color:#8b738d}
+#forecast-waves{display:grid;gap:.5cqh;margin-top:.65cqh}#forecast-waves>div{display:flex;gap:.8cqw;font-size:1.2cqh;line-height:1.4}#forecast-waves b{flex-shrink:0;color:#866180}#forecast-waves span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#lesson-intel summary{cursor:pointer;font-size:1.4cqh;font-weight:800}#lesson-intel p{margin:.65cqh 0 0;font-size:1.25cqh;line-height:1.55}
+.enemy-leader{color:#a47439}
+/* Brief field notes disappear automatically and can be recalled from the HUD. */
+.app #environment-intel,#endless-intel,#lesson-intel{background:linear-gradient(135deg,#fffdf8f5,#f6eef8f0);border:1px solid #ffffffd9;border-radius:12px;padding:1cqh 1cqw;box-shadow:0 4px 18px #39264420;backdrop-filter:blur(8px);animation:field-note-in .2s ease-out}
+#endless-intel{width:24cqw}#toggle-forecast{font-size:1.6cqh;padding-bottom:.7cqh;border-bottom:1px solid #cdbed448}
+#forecast-waves{gap:.7cqh}#forecast-waves>div{align-items:center;font-size:1.35cqh}#forecast-waves b{border-radius:5px;background:#eadeec;color:#72577d;padding:.25cqh .4cqw;font-size:1.2cqh}
+.app #environment-intel strong,#lesson-intel summary{font-size:1.7cqh;letter-spacing:.025em}.app #environment-intel span,#lesson-intel p{font-size:1.4cqh;line-height:1.6}.app #environment-intel small{font-size:1.3cqh}
+.app #battle-intel-button{width:4.2cqw;min-width:32px;padding:0;font-size:1.6cqh;font-weight:800;color:#786284;background:#fff7ec9c;border:1px solid #dbc8df;border-image:none;border-radius:8px;height:3.8cqh;align-self:center}
+.app #preparation-panel{position:absolute;left:50%;top:48%;bottom:auto;transform:translate(-50%,-50%);width:58cqw;max-height:71cqh;overflow:auto;z-index:24;border:1px solid #f9f5ff;border-image:none;border-radius:18px;background:linear-gradient(150deg,#fffdf7fa,#f3eaf9fa);padding:2.4cqh 2.4cqw;box-shadow:0 12px 55px #30214155;backdrop-filter:blur(12px);color:#493859}
+#preparation-panel header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1.4cqh;border-bottom:1px solid #cbb9d43d}#preparation-panel header small{font-size:1.4cqh;letter-spacing:.12em;color:#9575a3}#preparation-panel h3{font-size:3cqh;margin:.4cqh 0 0}#preparation-panel #collapse-prep{border:0;background:#e8dced;border-radius:8px;color:#6f547d;padding:.8cqh 1cqw;font-size:1.5cqh}
+#preparation-bosses{display:flex;gap:1.4cqw;margin:1.4cqh 0}#preparation-bosses article{display:flex;align-items:center;gap:1cqw;flex:1;background:#ffffffa6;border:1px solid #e5d9e8;border-radius:12px;padding:.5cqh .8cqw;min-width:0}#preparation-bosses img{width:6.5cqw;height:9cqh;object-fit:contain}#preparation-bosses strong{display:block;font-size:2cqh}#preparation-bosses small{display:block;margin-top:.5cqh;font-size:1.35cqh;color:#92719e}
+#preparation-panel #next-environment{font-size:1.5cqh;line-height:1.6}#preparation-panel #swap-note{font-size:1.5cqh;color:#94739e}#preparation-panel .swap-row{font-size:1.5cqh}#preparation-panel .swap-row select{font-size:1.4cqh;border-radius:7px;border:1px solid #d9c9df;background:#fffaf8;color:#68516e;padding:.5cqh .6cqw}
+#preparation-panel .prep-actions{display:flex;gap:1cqw;margin:1.8cqh 0 1cqh}#preparation-panel .prep-actions button{border:1px solid #d9c9df;border-radius:9px;background:#eee3f4;color:#695275;font-size:1.6cqh;padding:1cqh 1.5cqw}#preparation-panel #continue-encounter{flex:1;background:#86639e;color:#fff;border-color:#86639e;font-weight:800}#preparation-content>small{font-size:1.2cqh;color:#8f7c98}
+#preparation-panel #swap-controls{display:grid;grid-template-columns:1fr 1fr;gap:.65cqh 1.2cqw}#preparation-panel .swap-row{display:flex;align-items:center;justify-content:space-between;gap:.5cqw;padding:0;border:0}#preparation-panel .swap-row select{max-width:15cqw}
+@keyframes field-note-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.app .deployment #shovel-button.active{filter:none;transform:translateY(-.7cqh);outline:3px solid #e5aa53;outline-offset:-4px;box-shadow:0 0 0 2px #fff9e8,0 0 20px #ffc56db3;border-radius:10px}
+.app .deployment #shovel-button.active .tool-art{background:radial-gradient(ellipse,#ffe2a0 0%,#ffe2a000 72%)}
+.app .deployment #shovel-button.active .tool-symbol{transform:rotate(-18deg) scale(1.15);filter:drop-shadow(0 3px 2px #63402944)}
+.app .deployment #shovel-button.active .tool-caption strong{color:#9a5c26;font-size:min(2.1cqh,1.18cqw)}
+#shovel-cursor{position:fixed;z-index:120;pointer-events:none;transform:translate(9px,-36px);width:48px;height:56px;filter:drop-shadow(0 3px 3px #3b264f55)}
+#shovel-cursor img{display:block;width:44px;height:44px;transform:rotate(-20deg);background:#fff5dce8;border:2px solid #e6b565;border-radius:50%;padding:5px;box-sizing:border-box}
+#shovel-cursor span{display:block;width:44px;text-align:center;font-size:11px;font-weight:800;line-height:16px;color:#784a28;background:#fff4df;border:1px solid #e6b565;border-radius:8px}
+/* Colleague health uses the same rank and uniform formula as deployment. */
+#guide .guide-unit .guide-health{margin-top:.7cqh;color:#645771;font-size:.84cqw;line-height:1.5;font-weight:700;font-variant-numeric:tabular-nums}
+
+#preparation-bosses article p{font-size:1.3cqh;line-height:1.55;color:#887092;margin:.5cqh 0}#preparation-bosses article>div{min-width:0}#preparation-bosses img{flex-shrink:0}
+
+.app .boss-meter>.boss-heading{font-size:1.8cqh;text-shadow:0 1px 0 #fff5e8,1px 0 0 #fff5e8,-1px 0 0 #fff5e8}
+
+/* Only the current encounter portraits stay on the field. */
+#stage-boss-portraits{position:absolute;top:10.5cqh;right:1.5cqw;display:flex;gap:.65cqw;z-index:4;pointer-events:none}
+#stage-boss-portraits[hidden]{display:none}
+#stage-boss-portraits img{width:6.6cqh;height:6.6cqh;object-fit:contain;border:1px solid #f7eee3;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fbf4ea,#d7c9df);box-shadow:0 2px 7px #39264428;padding:.25cqh}

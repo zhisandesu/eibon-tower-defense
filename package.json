@@ -1,0 +1,48 @@
+{
+  "name": "eibon-tower-defense",
+  "productName": "异象大战伊波恩",
+  "version": "3.0.0",
+  "description": "异环非官方同人塔防游戏 · Windows、Android 与 Wallpaper Engine",
+  "author": "枝散",
+  "private": true,
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:windows": "electron-builder --win nsis zip --x64 --publish never",
+    "build:android": "node tools/build-android.mjs",
+    "build:wallpaper": "node tools/build-wallpaper.mjs",
+    "verify": "node tools/verify-runtime.mjs"
+  },
+  "devDependencies": {
+    "electron": "44.6.0",
+    "electron-builder": "26.15.3",
+    "pngjs": "^7.0.0"
+  },
+  "build": {
+    "appId": "site.zhisan.eibon",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "desktop/**",
+      "game/**",
+      "package.json",
+      "NOTICE.md"
+    ],
+    "asar": true,
+    "win": {
+      "icon": "desktop/icon.png",
+      "artifactName": "Eibon-Tower-Defense-${version}-Windows-${arch}.${ext}",
+      "signAndEditExecutable": true,
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "异象大战伊波恩",
+      "artifactName": "Eibon-Tower-Defense-${version}-Windows-Setup.exe",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

@@ -1,0 +1,4 @@
+/* Layout uses the whole window and retains the same horizontal composition. */
+html:root{background:#211c2c;overflow:hidden}
+body{position:absolute;left:50%;top:50%;width:var(--game-width,1672px);height:941px;margin:0;min-width:0;min-height:0;max-width:none;max-height:none;overflow:hidden;container-type:size;container-name:eibon-viewport;transform:translate(-50%,-50%) scale(var(--game-scale,1));transform-origin:center}
+.app,.game-shell{width:100%;height:100%}

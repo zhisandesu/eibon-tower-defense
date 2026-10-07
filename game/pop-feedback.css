@@ -1,0 +1,42 @@
+/* Generated battle feedback materials; names, phase, health and warnings remain live. */
+.boss-meter{width:min(44cqw,1400px);top:10.4cqh;background:none;border:0;box-shadow:none;gap:.3cqh}
+.boss-meter>.boss-heading{background:none;border:0;box-shadow:none;padding:.1cqh .7cqw;font-size:clamp(10px,1.9cqh,32px);text-shadow:0 1px 3px #180533,0 0 4px #180533;color:white}
+.boss-meter>.boss-health-track{height:1.25cqh;min-height:5px;border:0;border-radius:0;overflow:hidden;background:transparent url('assets/pop-ui-v1/boss-health-strips.png') 55.08% 32.39%/106.33% 955.42% no-repeat;box-shadow:none}
+.boss-meter .boss-health-track i{background:transparent url('assets/pop-ui-v1/boss-health-strips.png') 55.08% 67.04%/106.33% 955.42% no-repeat;border-radius:0;box-shadow:none}
+.boss-meter>.boss-cast-warning{right:0;bottom:calc(100% + .2cqh);max-width:20cqw;min-height:3.6cqh;padding:.8cqh 1.7cqw;gap:.4cqw;background:transparent url('assets/pop-ui-v1/hint-plates.png') 42.857% 83.240%/101.907% 276.645% no-repeat;border:0;border-radius:0;box-shadow:none;overflow:visible;text-shadow:none;font-size:clamp(9px,1.7cqh,26px)}
+.boss-cast-warning img{width:2cqh;height:2cqh;min-width:10px;min-height:10px}
+#terrain-alert{background:transparent url('assets/pop-ui-v1/hint-plates.png') 42.857% 83.240%/101.907% 276.645% no-repeat;border:0;border-radius:0;box-shadow:none;padding:1.5cqh 2.8cqw;max-width:28cqw;font-size:clamp(10px,1.8cqh,26px);font-weight:800}
+.toast,.stage-hint,#drag-ghost span{background:transparent url('assets/pop-ui-v1/hint-plates.png') 42.857% 19.409%/101.907% 280.333% no-repeat;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;color:#35105c;font-weight:800;text-shadow:none}
+.toast,.stage-hint{bottom:23cqh;min-width:18cqw;max-width:67cqw;padding:1.6cqh 3.3cqw;font-size:clamp(10px,1.9cqh,30px);line-height:1.35}
+#drag-ghost span{padding:10px 13px;font-size:12px}
+#drag-ghost.invalid span{background-color:transparent;color:#ac1456}
+.boss-banner{min-width:33cqw;max-width:60cqw;padding:3cqh 4cqw;background:transparent url('assets/pop-ui-v1/hint-plates.png') 42.857% 83.240%/101.907% 276.645% no-repeat;border:0;border-radius:0;box-shadow:none;color:white;gap:.8cqh}
+.boss-banner small{font-size:clamp(10px,1.6cqh,25px);color:#e6c6ff}
+.boss-banner strong{font-size:clamp(22px,4cqh,65px);font-style:italic}
+.boss-banner span{font-size:clamp(10px,1.7cqh,28px)}
+.lane-buff-group{font-size:clamp(8px,.7cqw,22px);gap:.16cqh .08cqw}
+.lane-buff{position:relative;width:5.2cqw;height:2.45cqh;min-height:12px;padding:0;border:0;border-radius:0;box-shadow:none;background-color:transparent;background-image:url('assets/pop-ui-v1/buff-badges.png');background-repeat:no-repeat}
+.lane-buff>span:last-child{font-size:0;color:transparent}
+.lane-buff .lane-buff-icons{position:absolute;display:flex;gap:0;left:13%;top:23%;height:50%;align-items:center;max-width:31%}
+.lane-buff .attribute-icon{width:.75cqw;height:1.3cqh;min-width:0;min-height:0}
+.reduce-motion .boss-meter .boss-health-track i{transition:none}
+
+.lane-buff[data-reaction="genesis"]{background-size:211.57760814249366% 466.00985221674875%;background-position:3.6488027366020526% 9.01749663526245%}
+.lane-buff[data-reaction="delay"]{background-size:210.24020227560052% 466.00985221674875%;background-position:97.36238532110092% 9.01749663526245%}
+.lane-buff[data-reaction="cover"]{background-size:211.57760814249366% 463.72549019607845%;background-position:3.6488027366020526% 38.544474393531%}
+.lane-buff[data-reaction="burn"]{background-size:210.24020227560052% 463.72549019607845%;background-position:97.36238532110092% 38.544474393531%}
+.lane-buff[data-reaction="star"]{background-size:211.57760814249366% 466.00985221674875%;background-position:3.6488027366020526% 68.23687752355316%}
+.lane-buff[data-reaction="stain"]{background-size:210.24020227560052% 466.00985221674875%;background-position:97.36238532110092% 68.23687752355316%}
+.lane-buff[data-reaction="surplus"]{background-size:211.57760814249366% 473.00000000000006%;background-position:3.6488027366020526% 97.18498659517427%}
+.lane-buff[data-reaction="discord"]{background-size:210.24020227560052% 473.00000000000006%;background-position:97.36238532110092% 97.18498659517427%}
+/* Keep cast warnings beside the independent health strip, clear of the top HUD. */
+.boss-meter>.boss-cast-warning{left:calc(100% + 1cqw);right:auto;top:.2cqh;bottom:auto;max-width:19cqw;width:max-content}
+/* Existing character descriptions become a compact live hint above the deployment row. */
+.info-strip{display:flex;position:absolute;z-index:7;left:50%;bottom:23cqh;transform:translateX(-50%);width:max-content;min-width:24cqw;max-width:67cqw;height:auto;min-height:5cqh;padding:1.2cqh 3cqw;gap:.8cqw;background:transparent url('assets/pop-ui-v1/hint-plates.png') 42.857% 19.409%/101.907% 280.333% no-repeat;border:0;border-radius:0;box-shadow:none;color:#45206d;font-size:clamp(10px,1.5cqh,26px);line-height:1.4;visibility:hidden;opacity:0;pointer-events:none}
+.info-strip strong{color:#2b074e;font-size:clamp(11px,1.8cqh,29px);font-weight:900}
+.info-strip #selected-description{white-space:normal;overflow:visible}
+.info-strip kbd,.info-strip #selected-dot{display:none}
+.game-shell:has(.deployment button:is(:hover,:focus-visible)) .info-strip{visibility:visible;opacity:1}
+.game-shell:has(#toast.show) .info-strip{visibility:hidden;opacity:0}
+.boss-banner{padding:5cqh 4cqw;gap:.5cqh;line-height:1.2}
+.boss-banner{padding:6cqh 4.5cqw 7cqh;gap:.4cqh;line-height:1.15}.info-strip{padding:2cqh 5cqw}

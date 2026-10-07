@@ -1,0 +1,44 @@
+#eibon-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  background: #faf7ff;
+  color: #493466;
+  font: 500 14px/1.5 "Microsoft YaHei", "PingFang SC", sans-serif;
+  transition: opacity 240ms ease-out;
+}
+#eibon-loading.is-ready { opacity: 0; pointer-events: none; }
+#eibon-loading[hidden], #eibon-loading-retry[hidden] { display: none; }
+body[data-eibon-loading] > :not(#eibon-loading):not(script) { visibility: hidden; }
+.eibon-loading-art {
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: center;
+}
+.eibon-loading-bottom {
+  position: absolute;
+  inset: auto max(5cqw, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(5cqw, env(safe-area-inset-left));
+  padding: 10px 14px 12px;
+  background: rgb(250 247 255 / 94%);
+}
+.eibon-loading-caption { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 8px; }
+#eibon-loading-percent { font-variant-numeric: tabular-nums; }
+#eibon-loading-progress {
+  appearance: none; display: block; width: 100%; height: 7px;
+  border: 0; border-radius: 8px; overflow: hidden;
+  background: #e1d8f3; color: #7655be;
+}
+#eibon-loading-progress::-webkit-progress-bar { background: #e1d8f3; border-radius: 8px; }
+#eibon-loading-progress::-webkit-progress-value { background: #7655be; border-radius: 8px; }
+#eibon-loading-progress::-moz-progress-bar { background: #7655be; border-radius: 8px; }
+#eibon-loading-retry {
+  margin-top: 12px; padding: 10px 20px; min-height: 44px;
+  background: #65429f; color: #fff; border: 0; border-radius: 8px;
+  font: inherit; cursor: pointer;
+}
+#eibon-loading-retry:hover { background: #4c2e7e; }
+#eibon-loading-retry:focus-visible { outline: 3px solid #493466; outline-offset: 4px; }
+#eibon-loading ::selection { background: #7655be; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) { #eibon-loading { transition: none; } }
+

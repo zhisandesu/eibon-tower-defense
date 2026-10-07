@@ -1,0 +1,56 @@
+/* Selected diagonal poster concept. All decorative cuts are supplied raster artwork. */
+#menu{--pop-ink:#170b3d;isolation:isolate;overflow:hidden;color:var(--pop-ink)}
+#menu #menu-video,#menu #menu-scene{filter:saturate(1.22) contrast(1.045)}
+#menu #menu-title img{filter:saturate(1.12) contrast(1.035)}
+#menu .menu-pop-decoration{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;z-index:1}
+#menu .menu-pop-foreground{position:absolute;left:0;bottom:0;width:65%;height:29%;object-fit:fill;pointer-events:none;z-index:2;filter:saturate(1.08)}
+#menu .menu-kicker{display:none}
+#menu .menu-panel{inset:0;width:100%;height:100%;padding:0;border:0;border-radius:0;background:none;z-index:3;pointer-events:none}
+#menu .menu-panel button{pointer-events:auto}
+#menu .menu-panel #menu-title{position:absolute;left:68%;top:4%;width:29%;height:26%;margin:0}
+#menu .menu-panel #menu-title img{object-fit:fill}
+#menu .menu-tagline{display:block;position:absolute;left:70%;top:29%;width:26%;margin:0;color:#8870cf;font-size:1.2cqw;font-weight:800;letter-spacing:.1em;transform:rotate(-2deg)}
+#menu .menu-modes{display:contents}
+#menu .big-play,#menu .menu-modes button{position:absolute;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;text-shadow:none;transform:none;isolation:isolate;overflow:visible;transition:none}
+#menu .big-play::before,#menu .menu-modes button::before{content:"";position:absolute;inset:0;background:var(--pop-art) center/100% 100% no-repeat;z-index:-1;pointer-events:none;transition:transform 220ms cubic-bezier(.2,.85,.25,1.2),filter 220ms}
+#menu #quick-start-button{left:61.5%;top:29.3%;width:38.5%;height:31%;--pop-art:url('assets/pop-ui-v1/home-primary-labeled.png');color:#fff;font-size:4.05cqw;font-style:italic;font-weight:900;letter-spacing:-.05em}
+#menu #day-button{left:67%;top:53.1%;width:32%;height:16.5%;--pop-art:url('assets/pop-ui-v1/home-story-labeled.png');font-size:2.13cqw;font-weight:900;color:var(--pop-ink)}
+#menu #endless-button{left:66.5%;top:62.1%;width:30.5%;height:17.7%;--pop-art:url('assets/pop-ui-v1/home-endless-labeled.png');font-size:2.13cqw;font-weight:900;color:#fff}
+#menu .pop-button-content{position:absolute;left:15%;right:12%;top:39%;height:30%;display:flex;align-items:center;gap:1.25cqw;transform:rotate(-7deg);white-space:nowrap;pointer-events:none}
+#menu #quick-start-button .pop-button-content{left:15%;right:14%;top:44%;gap:1.2cqw}
+#menu #endless-button .pop-button-content{left:17%;right:11%;top:44%}
+#menu .pop-button-content>img:first-child{width:2.4cqw;height:4.3cqh;filter:brightness(0) saturate(100%)}
+#menu #quick-start-button .pop-button-content>img:first-child{width:3.6cqw;height:7cqh;filter:brightness(0) invert(1)}
+#menu #endless-button .pop-button-content>img{filter:brightness(0) invert(1)}
+#menu .pop-button-content>.menu-arrow{width:2cqw;height:4cqh;margin-left:auto;filter:brightness(0)}
+#menu #quick-start-button .menu-arrow{filter:brightness(0) invert(1);width:2.6cqw}
+#menu .pop-button-content small{font-size:1.13cqw;color:#8152df;margin-left:auto;letter-spacing:0;white-space:nowrap}
+#menu #quick-start-button .pop-button-content,#menu #endless-button .pop-button-content{opacity:0}
+#menu #day-button .pop-button-content>img,#menu #day-button .pop-button-content>span{opacity:0}
+#menu #day-button .pop-button-content small{position:absolute;left:74%;top:-10%;margin:0;font-weight:800}
+#menu .big-play:not(:disabled):is(:hover,:focus-visible)::before{filter:hue-rotate(18deg) saturate(1.28);transform:translate(-.5cqw,-.35cqh) skewX(-2deg) scale(1.025,1.055)}
+#menu .menu-modes button:not(:disabled):is(:hover,:focus-visible)::before{filter:hue-rotate(-22deg) saturate(1.5);transform:translate(-.45cqw,-.2cqh) skewX(-3deg) scale(1.025,1.08)}
+#menu .big-play:not(:disabled):active::before,#menu .menu-modes button:not(:disabled):active::before{transform:translate(.25cqw,.35cqh) skewX(3deg) scale(.975,.94);filter:hue-rotate(48deg)}
+#menu button:focus-visible,#menu a:focus-visible{outline:3px solid #ec319d;outline-offset:3px}
+#menu .extra-modes,#menu .menu-utilities{position:absolute;left:70.8%;width:22%;height:6.5%;display:flex;justify-content:flex-start;gap:0;margin:0}
+#menu .extra-modes{top:78.4%}#menu .menu-utilities{top:85.1%}
+#menu .extra-modes button,#menu .menu-utilities button{border:0;border-radius:0;display:block;width:50%;height:100%;padding:0;background-image:url('assets/pop-ui-v1/home-utilities-labeled.png');background-size:200% 200%;background-repeat:no-repeat;background-color:transparent;box-shadow:none;font-size:0;color:transparent;transition:filter 160ms,transform 160ms}
+#menu #night-button{background-position:left top}#menu #sandbox-button{background-position:right top}#menu #menu-guide-button{background-position:left bottom}#menu #menu-settings-button{background-position:right bottom}
+#menu .extra-modes img,#menu .menu-utilities img{display:none}
+#menu .extra-modes button:hover,#menu .menu-utilities button:hover{filter:hue-rotate(35deg) brightness(1.8);transform:translateY(-2px)}
+#menu .loading-status{position:absolute;left:70%;top:76%;width:27%;font-size:.8cqw}
+#menu .loading-status:empty{display:none}
+#menu .menu-footer{inset:0;z-index:4;pointer-events:none;color:var(--pop-ink);font-size:1cqw}
+#menu .menu-footer>span{display:none}
+#menu .menu-fullscreen{left:1.6%;bottom:2.8%;width:9.4%;height:7.6%;transform:none;pointer-events:auto}
+#menu .menu-fullscreen #fullscreen-button{width:100%;height:100%;padding:0;gap:0;border:0;border-radius:0;background:url('assets/pop-ui-v1/home-fullscreen-states.png') center 14%/136% 220% no-repeat;box-shadow:none;backdrop-filter:none;color:transparent;font-size:0;font-weight:800;transition:filter 180ms,transform 180ms}
+#menu .menu-fullscreen #fullscreen-button[aria-pressed=true]{background-position:center 100%}
+#menu .menu-fullscreen #fullscreen-button:hover{filter:hue-rotate(20deg) saturate(1.3);transform:translateY(-2px)}
+#menu .menu-fullscreen #fullscreen-button img{display:none}
+#menu .menu-fullscreen #fullscreen-button span{opacity:0}
+#menu #fullscreen-note{color:#fff;background:#21104e;max-width:80cqw}
+#menu #fullscreen-note:empty{display:none}
+#menu .menu-footer>a{position:absolute;right:2.6%;bottom:3.7%;pointer-events:auto;font-weight:700}
+#menu .menu-footer>a img{filter:brightness(0);width:1.2cqw;height:2cqh}
+.reduce-motion #menu *, .reduce-motion #menu *::before{animation:none!important;transition:none!important}
+

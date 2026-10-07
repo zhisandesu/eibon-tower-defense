@@ -1,0 +1,6 @@
+.menu-fullscreen,#boss-choice{display:none!important}
+#boss-choice-wrap{position:relative}
+#wallpaper-boss-toggle{display:block;width:100%;padding:.75vh .4vw;border:1px solid #8750db;border-radius:0;background:#fff;color:#371661;text-align:left;font-size:clamp(10px,.9vw,16px)}
+#wallpaper-boss-options{position:absolute;top:100%;left:0;right:0;z-index:50;max-height:30vh;overflow:auto;padding:3px;border:1px solid #8750db;background:#fff;box-shadow:0 3px 12px #230b4b44;scrollbar-width:thin}
+#wallpaper-boss-options button{display:block;width:100%;padding:.7vh .35vw;border:0;border-radius:0;text-align:left;font-size:clamp(10px,.9vw,16px);color:#371661;background:#fff}
+#wallpaper-boss-options button:hover,#wallpaper-boss-options button[aria-pressed=true]{background:#8a20f9;color:#fff}

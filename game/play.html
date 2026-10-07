@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7960ee">
+  <title>异象大战伊波恩 · 今日值班</title>
+  <link rel="icon" type="image/png" href="assets/game-icon-v02-32.png">
+  <link rel="apple-touch-icon" href="assets/game-icon-v02-180.png">
+  <link rel="stylesheet" href="site-integration.css?v=20261007-counters6">
+  <link rel="stylesheet" href="atrium-ui.css?v=20261007-counters6">
+  <link rel="stylesheet" href="battle-reference.css?v=20261007-counters6">
+  <link rel="stylesheet" href="ui-materials.css?v=20261007-counters6">
+  <link rel="stylesheet" href="menu-pop.css?v=20261007-counters6">
+  <link rel="stylesheet" href="pop-pages.css?v=20261007-counters6">
+  <link rel="stylesheet" href="pop-chapter-frames.css?v=20261001-pop1">
+  <link rel="stylesheet" href="pop-deck-battle.css?v=20261007-counters6">
+  <link rel="stylesheet" href="pop-feedback.css?v=20261007-counters6">
+  <link rel="stylesheet" href="pop-completion.css?v=20261007-counters6">
+  <link rel="stylesheet" href="loading.css?v=20261007-counters6">
+  <link rel="stylesheet" href="focus-feedback.css?v=20261001-2">
+  <link rel="stylesheet" href="evolution.css?v=20261007-counters6">
+  <link rel="stylesheet" href="unified-ui.css?v=20261007-counters6">
+  <link rel="stylesheet" href="battle-clean.css?v=20261007-combat-ui13">
+  <link rel="stylesheet" href="landscape-layout.css?v=20261007-counters6">
+  <script src="landscape-layout.js?v=20261007-counters6"></script>
+  <link rel="preload" as="image" href="assets/loading/arrival-20261001.png">
+<script src="host.js"></script>
+</head>
+<body data-eibon-loading>
+<section id="eibon-loading" aria-label="异象大战伊波恩正在加载">
+  <img class="eibon-loading-art" src="assets/loading/arrival-20261001.png" alt="安魂曲、早雾与薄荷的合影" fetchpriority="high">
+  <div class="eibon-loading-bottom">
+    <div class="eibon-loading-caption"><span id="eibon-loading-label" role="status">正在准备游戏…</span><span id="eibon-loading-percent" aria-hidden="true">0%</span></div>
+    <progress id="eibon-loading-progress" max="100" value="0" aria-label="游戏加载进度"></progress>
+    <button id="eibon-loading-retry" type="button" hidden>重新加载</button>
+  </div>
+</section>
+<script src="loading.js?v=20261007-counters6"></script>
+<div class="app">
+  <header class="topbar" hidden><div class="top-actions"><button id="sound-button" aria-pressed="true">声音 开</button><button id="guide-button">手册</button><button class="text-button" id="home-button">主菜单</button></div></header>
+  <main class="game-shell">
+    <section class="dashboard" aria-label="战斗状态">
+      <button class="battle-brand icon-button" id="battle-menu-button" title="返回主菜单" aria-label="返回主菜单"><img src="assets/ui-icons/home.svg" alt=""></button>
+      <div class="status money"><img class="fons-image" src="assets/fons-ticket.png" alt=""><small>方斯</small><strong id="money">300</strong><button id="collect-button" title="收取全部方斯（C）" aria-label="收取全部方斯">收取</button></div>
+      <div class="status life"><img src="assets/ui-icons/heart-pink.svg" alt=""><strong id="life-count">3/3</strong><span id="hearts" class="sr-only" aria-label="店铺生命 3"><i></i><i></i><i></i></span></div>
+      <div class="shift-clock"><div class="wave-box"><div><span id="shift-label">日常守店</span><strong id="wave-label">准备营业</strong></div><div class="wave-track"><i id="wave-fill"></i></div></div><div class="battle-time"><img src="assets/ui-icons/clock.svg" alt=""><span id="battle-time">00:00</span></div></div>
+      <div class="battle-controls"><button id="battle-rules-button" class="icon-button" title="值班手册" aria-label="值班手册"><img src="assets/ui-icons/help-filled-battle.svg" alt=""></button><button id="speed-button" class="square-button" aria-label="切换战斗速度"><img src="assets/ui-icons/fast-forward-battle.svg" alt=""><span id="speed-label">1×</span></button><button id="pause-button" class="icon-button" aria-label="暂停"><img src="assets/ui-icons/pause-filled-battle.svg" alt=""></button></div>
+    </section>
+    <div class="stage" id="stage">
+      <canvas id="game" width="1440" height="720" tabindex="0" aria-label="五路十一列塔防战场。拖动角色卡，松手部署一次；1 至 0 选人，方向键选格，回车放置，空格暂停。"></canvas>
+      <div id="lane-buffs" class="lane-buffs" aria-label="各路环合增益"></div>
+      <div class="stage-tag" id="stage-label">桥间地 / 伊波恩门前</div>
+      <div class="boss-banner" id="boss-banner" hidden><small>特别值班通知</small><strong id="boss-title"></strong><span id="boss-skill"></span></div>
+      <div class="boss-meter" id="boss-meter" hidden><div class="boss-heading"><span id="boss-meter-name"></span><span id="boss-phase"></span><strong id="boss-percent"></strong></div><div id="boss-health-track" class="boss-health-track" role="progressbar" aria-labelledby="boss-meter-name" aria-valuemin="0" aria-valuemax="100"><i id="boss-meter-fill"></i></div><small id="boss-weakness" hidden></small><div id="boss-cast-warning" class="boss-cast-warning" hidden><img src="assets/ui-icons/warning.svg" alt=""><span id="boss-cast-label"></span></div></div>
+      <div id="terrain-alert" hidden role="status"></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <section class="deployment" aria-label="角色部署">
+      <div id="cards" class="cards"></div>
+      <div class="tool-cards"><button id="shovel-button" class="tool-card" title="撤回角色，返还一半费用（R）"><span class="tool-art"><img class="tool-symbol" src="assets/ui-icons/shovel-filled.svg" alt=""></span><span class="tool-caption"><strong>铲子</strong></span></button><button id="jelly-button" class="tool-card" title="水母平台：25 方斯。可垫在已有角色脚下（J）"><span class="tool-art"><canvas id="jelly-icon" width="100" height="80"></canvas></span><span class="tool-caption"><strong>水母</strong><small>25</small></span><span id="jelly-cooldown"></span></button></div>
+    </section>
+    <div class="info-strip"><span id="selected-dot"></span><strong id="selected-name">拖动上岗</strong><span id="selected-description">按住角色拖到格子，松手部署一次。</span><kbd>空格 暂停</kbd></div>
+  </main>
+  <footer class="footer" hidden><span id="footer-stats"></span></footer>
+</div>
+<div id="menu" class="overlay menu-overlay" role="dialog" aria-modal="true" aria-labelledby="menu-title" tabindex="-1">
+  <canvas id="menu-scene" width="1440" height="810" aria-hidden="true"></canvas>
+  <video id="menu-video" data-src="assets/atrium-v1/menu-loop-20261001.mp4" poster="assets/atrium-v1/menu-wallpaper.png" muted loop playsinline preload="auto" draggable="false" disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback" hidden aria-hidden="true"></video>
+  <img class="menu-pop-decoration" src="assets/pop-ui-v1/home-decorations.png" alt="" aria-hidden="true" draggable="false">
+  <img class="menu-pop-foreground" src="assets/pop-ui-v1/home-foreground.png" alt="" aria-hidden="true" draggable="false">
+  <div class="menu-kicker"><strong>异象大战伊波恩</strong><span>NTE FAN GAME · v3.0</span></div>
+  <div class="menu-panel">
+    <h2 id="menu-title"><img src="assets/atrium-v1/title.png" alt="异象大战伊波恩"></h2>
+    <p class="menu-tagline">异环非官方同人游戏</p>
+    <button id="quick-start-button" class="big-play" disabled><b class="pop-button-content"><img src="assets/ui-icons/play.svg" alt=""><span>开始值班</span><img class="menu-arrow" src="assets/ui-icons/arrow-right.svg" alt=""></b></button>
+    <nav class="menu-modes" aria-label="其他玩法">
+      <button id="day-button" disabled><b class="pop-button-content"><img src="assets/ui-icons/book.svg" alt=""><span>主线冒险</span><small aria-label="主线通关进度">0 / 15</small><img class="menu-arrow" src="assets/ui-icons/chevron-right.svg" alt=""></b></button>
+      <button id="endless-button" disabled><b class="pop-button-content"><img src="assets/ui-icons/infinity.svg" alt=""><span>无尽加班</span><img class="menu-arrow" src="assets/ui-icons/chevron-right.svg" alt=""></b></button>
+    </nav>
+    <div class="extra-modes"><button id="night-button" disabled><img src="assets/ui-icons/moon.svg" alt="">夜班挑战</button><button id="sandbox-button" disabled><img src="assets/ui-icons/flask.svg" alt="">自由试验</button></div>
+    <div id="loading-status" class="loading-status" role="status" aria-live="polite">正在准备值班…</div>
+    <div class="menu-utilities"><button id="menu-guide-button"><img src="assets/ui-icons/book.svg" alt="">图鉴</button><button id="menu-settings-button"><img src="assets/ui-icons/settings.svg" alt="">设置</button></div>
+  </div>
+  <div class="menu-footer"><span>异环同人 · 非官方作品</span><div class="menu-fullscreen"><button id="fullscreen-button" class="text-button" aria-pressed="false"><img src="assets/ui-icons/fullscreen.svg" alt=""><span id="fullscreen-label">全屏</span></button><span id="fullscreen-note" role="status" aria-live="polite"></span></div></div>
+</div>
+<div id="campaign-map" class="overlay full-overlay" role="dialog" aria-modal="true" aria-labelledby="campaign-title" hidden>
+  <div class="campaign-panel">
+    <div class="campaign-topbar"><button id="close-campaign" class="back-button"><span aria-hidden="true">←</span> 返回主菜单</button><span class="eyebrow">EIBON / STORY</span><span id="campaign-count"></span></div>
+    <div class="campaign-heading"><div><p class="eyebrow">沿着街道，开始今天的冒险</p><h2 id="campaign-title">主线冒险</h2><p id="campaign-progress"></p></div><img src="assets/atrium-v1/title.png" alt="" aria-hidden="true"></div>
+    <div id="chapter-list" class="chapter-list"></div>
+    <div class="campaign-footer"><div class="campaign-endless"><button id="campaign-endless-button" class="big-play">进入无尽加班 <img src="assets/ui-icons/arrow-right.svg" alt=""></button><p id="save-note"></p></div></div>
+  </div>
+</div>
+<div id="deck-picker" class="overlay full-overlay" role="dialog" aria-modal="true" aria-labelledby="deck-title" hidden>
+  <div class="deck-panel">
+    <aside class="deck-hero"><canvas id="deck-hero-shadow" width="640" height="800" aria-hidden="true"></canvas><img id="deck-wallpaper" src="assets/pop-ui-v1/portraits/requiem.png" alt="" draggable="false"><canvas id="deck-hero-sprite" width="640" height="800" hidden aria-hidden="true"></canvas><button id="close-deck" class="back-button"><img src="assets/ui-icons/arrow-left.svg" alt="">战前编队</button><div class="hero-caption"><span id="hero-attribute"></span><h3 id="hero-name">达芙蒂尔</h3><p id="hero-role"></p><p id="hero-description"></p></div></aside>
+    <div class="deck-content"><header class="deck-header"><div><p class="eyebrow">EIBON / TEAM</p><h2 id="deck-title">本次出勤</h2></div><div class="deck-summary"><strong id="deck-count" aria-live="polite"></strong><button id="recommended-deck">推荐编队</button></div></header><p id="deck-subtitle"></p>
+      <div class="deck-main"><div class="roster-section"><div id="deck-filters" class="deck-filters" aria-label="按属性筛选"></div><div id="deck-roster" class="deck-roster"></div><p id="roster-empty" hidden>没有符合筛选条件的同事。</p><div id="reaction-preview" class="reaction-preview"></div></div>
+      <aside class="enemy-intel"><h3>敌方情报</h3><section id="boss-counter-check" aria-label="首领机制与编队应对" hidden></section><div id="enemy-preview"></div><div id="boss-choice-wrap" hidden><label for="boss-choice">试验首领</label><select id="boss-choice"><option value="">日常波次</option></select></div><p id="boss-advice"></p></aside></div>
+      <div class="deck-bottom"><div class="deck-lineup"><div class="lineup-label">出战席位<strong id="lineup-count">0/10</strong></div><div id="deck-slots" class="deck-slots" aria-label="已选出战角色，点击可移除"></div><button id="start-shift" class="big-play">出发 <img src="assets/ui-icons/arrow-right.svg" alt=""></button></div><p>点击角色加入或移出编队 · 水母独立供应，不占出战位</p></div>
+    </div>
+  </div>
+</div>
+<div id="run-status" hidden aria-live="off"></div>
+<div id="result" class="overlay centered-overlay" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden><div class="result-panel"><div class="eyebrow" id="result-eyebrow">今日营业结束</div><h2 id="result-title"><span id="result-title-image">值班完成</span></h2><p id="result-text"></p><div id="result-stats" class="result-stats"></div><div id="result-life" class="result-life"></div><img id="result-crew" class="result-crew" src="assets/result-success-crew-v01.png" alt=""><canvas id="result-defeat" class="result-defeat" width="512" height="512" role="img" aria-label="薄荷抱膝坐下，低头叹气后缓缓抬头" hidden></canvas><div class="result-actions"><button id="retry-button" class="big-play">重新挑战</button><button id="result-adjust" class="text-button">调整编队</button><button id="result-home" class="text-button">返回主菜单</button></div></div></div>
+<div class="overlay centered-overlay" id="pause-cover" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden><div class="pause-panel"><p class="eyebrow">TAKE A LITTLE BREAK</p><h2 id="pause-title">稍事休息</h2><p>店铺的时间，暂时停在这里。</p><button id="resume-button" class="big-play"><img src="assets/ui-icons/play.svg" alt="">继续值班</button><div class="pause-actions"><button id="pause-restart"><img src="assets/ui-icons/restart.svg" alt="">重新开始</button><button id="pause-home"><img src="assets/ui-icons/home.svg" alt="">返回主菜单</button></div><button id="pause-sound" class="text-button" aria-pressed="true"><img src="assets/ui-icons/volume.svg" alt="">声音 开</button></div></div>
+<div id="guide" class="overlay full-overlay" role="dialog" aria-modal="true" aria-labelledby="guide-title" hidden><div class="guide-panel"><header class="guide-header"><button class="back-button" id="close-guide"><img src="assets/ui-icons/arrow-left.svg" alt="">返回</button><p class="eyebrow">EIBON / ARCHIVE</p></header><h2 id="guide-title">伊波恩值班手册</h2><nav class="guide-tabs" aria-label="手册分类"><button data-guide-tab="basics" aria-pressed="true">值班须知</button><button data-guide-tab="roster" aria-pressed="false">同事图鉴</button><button data-guide-tab="reactions" aria-pressed="false">环合反应</button><button data-guide-tab="bosses" aria-pressed="false">异象档案</button></nav>
+<div class="guide-basics" data-guide-panel="basics"><p><b>01 · 编队与三叠</b>五路十一列，通常每局最多十位常驻同事。浔上场立即暂停本路2秒，二、三叠延至3、5秒。同路可放多位浔，低伤近战各自生效；就绪的最高叠数浔施放一次时停，同路共享24秒间隔，升级和撤回重放不能重置。将角色拖到街道上部署；在同一格重复部署相同角色升至二叠、三叠，按正常费用支付并保留原生命比例。三叠增强能力与专属联动，有已核实原作时装的角色会切换外观；安魂曲切换紫色哥特形态。真红放在薄荷前方，接到旋风后消除原攻击，转为增幅火焰；三叠才解锁红温和龙爪近战。翳是地刺，可与普通角色共格。主线赢关招募，旧进度继续有效。</p><p><b>02 · 首领带来的街道</b>首领入场后改变街道气氛与规则：余烬灼地、异象侵蚀、锁页封技、节拍落点、蝶影遮蔽等各有应对。鲸鱼带来海面，陆地异象不会潜水；潜水部属会循环下潜与浮出。海月可直接部署，一叠就有本路穿透和落点范围伤害，对潜水敌人造成3倍伤害且无潜水减伤。淹没不再使角色立即退场，海啸重复命中水面格会造成推浪伤害。</p><p><b>03 · 状态与补给</b>沉睡、惑音、封技、禁疗与灼烧会显示倒计时。埃德嘉或消解装置可净化并提供短暂抗性，伊洛伊治疗受禁疗限制。猫猫是道具，使普通或精英敌人反攻八秒，全局最多两次。局内方斯可购买医疗、消解与照明补给；商店库存道具会在使用后扣除。结算将剩余且确实赚得的局内方斯按二十倍存入商店。</p><p><b>04 · 首领、无尽与随机传送</b>首领固定预警落点，普通攻击与技能连段之间留有应对时间；弱势命中会制造硬直与增伤破绽。精英生命更高，早雾能吞噬可吞目标。无尽每三波出现首领：先完成十一场单首领，再进入双首领与三首领阶段；首领战前可更换两张编队卡，场上角色与等级保留，时间、收入和环境伤害暂停。随机传送使用已招募角色池，六格牌库随机给卡，角色免费部署，方斯用于补给；战备时可更换两张传送卡。机制与升级数值均为本同人塔防改编。</p></div><div id="guide-reactions" class="guide-reactions" data-guide-panel="reactions" hidden></div><div id="guide-roster" class="guide-roster" data-guide-panel="roster" hidden></div><div id="guide-bosses" class="guide-bosses" data-guide-panel="bosses" hidden></div><p class="guide-keyboard">1–0 选人 · J 猫猫道具 · 方向键选格 · Enter 放置 · R 铲子 · C 收方斯 · 空格暂停 · Esc 返回</p></div></div>
+<div id="settings" class="overlay centered-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden><div class="settings-panel"><button id="close-settings" class="close-button" aria-label="关闭设置"><img src="assets/ui-icons/close.svg" alt=""></button><p class="eyebrow">EIBON / PREFERENCES</p><h2 id="settings-title">值班设置</h2><div class="setting-row"><div><strong>游戏声音</strong><small>背景音乐、角色语音与音效</small></div><button id="settings-sound" class="toggle-button" aria-pressed="true">开启</button></div><label class="setting-row" for="music-volume"><div><strong>音乐音量</strong><small id="music-volume-value">35%</small></div><input id="music-volume" type="range" min="0" max="100" value="35"></label><div class="setting-row"><div><strong>减少动态效果</strong><small>关闭镜头震动，减轻界面动效</small></div><button id="settings-motion" class="toggle-button" aria-pressed="false">关闭</button></div><p id="settings-note" role="status">偏好保存在本浏览器。</p></div></div>
+<div id="shovel-cursor" hidden aria-hidden="true"><img src="assets/ui-icons/shovel-filled.svg" alt=""><span>撤回</span></div>
+<div id="drag-ghost" hidden aria-hidden="true"><canvas width="200" height="200"></canvas><span>松手上岗</span></div>
+<script src="atlas.js"></script><script src="expansion-atlas.js"></script><script src="audio/manifest.js"></script><script src="audio/sfx.js?v=20261007-shovel1"></script><script src="audio/boss-music.js"></script><script src="engine.js?v=20261007-combat-ui13"></script><script src="expansion.js?v=20261007-combat-ui13"></script><script src="evolution.js?v=20261007-combat-ui13"></script><script src="v2-atlas.js?v=20261007-mounted-skins1"></script><script src="encounter-atlas.js?v=20261007-elite-skills1"></script><script src="board-layout.js?v=20261001-compact1"></script><script src="defeat-animation.js?v=20261001-v1"></script><script src="evolution-ui.js?v=20261007-combat-ui13"></script><script src="game.js?v=20261007-combat-ui13"></script>
+</body></html>

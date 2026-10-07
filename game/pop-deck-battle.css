@@ -1,0 +1,152 @@
+/* Approved POP artwork; live cards, prices, filters and battle controls stay interactive. */
+#deck-picker .deck-panel{background:#fcfaff url('assets/pop-ui-v1/deck-background-v3.png') center/100% 100% no-repeat;color:#230b4b;grid-template-columns:33% minmax(0,1fr)}
+#deck-picker .deck-hero{background:transparent}
+#deck-picker #deck-wallpaper{position:absolute;inset:3% 0 auto;width:100%;height:79%;object-fit:contain;object-position:center!important;filter:saturate(1.1)}
+#deck-picker #deck-hero-echo{position:absolute;left:33%;top:-18%;width:135%;height:120%;max-width:none;object-fit:cover;object-position:center top;opacity:.16;filter:grayscale(1);pointer-events:none}
+#deck-picker .deck-content{background:none;padding:2.7cqh 1.6cqw 1.8cqh 1.7cqw;grid-template-rows:9cqh auto minmax(0,1fr) auto}
+#deck-picker .deck-header>div:first-child{visibility:hidden}
+#deck-picker .deck-summary{margin-left:auto;gap:.6cqw;font-size:1.15cqw;align-self:center}
+#deck-picker .deck-summary strong{color:#2c0959;font-weight:900}
+#deck-picker #deck-subtitle{margin:.7cqh 0 1.2cqh;color:#7355a7;font-size:.92cqw;max-height:4cqh}
+#deck-picker .deck-main{grid-template-columns:minmax(0,1fr) 12.7cqw;gap:1cqw}
+#deck-picker .deck-filters{gap:.5cqw;margin-bottom:.7cqh}
+#deck-picker .deck-filters button{font-size:1.04cqw;height:4cqh;padding:.3cqh .7cqw;border-radius:0;color:#684f95;font-weight:700}
+#deck-picker .deck-filters button[aria-pressed=true]{color:white;background:#8a20f9}
+#deck-picker .deck-filters .attribute-icon{width:1.45cqw;height:2.65cqh}
+#deck-picker .deck-roster{gap:.3cqh .1cqw}
+#deck-picker .deck-card,#deck-picker .deck-card.checked{padding:.9cqh .65cqw 1.1cqh;border:0;border-radius:0;background:transparent url('assets/pop-ui-v1/pop-card-frame-v2.png') center/100% 100% no-repeat;box-shadow:none;backdrop-filter:none;overflow:hidden;transition:filter .15s,transform .15s}
+#deck-picker .deck-card .avatar-window{background:transparent;width:100%;flex:1;min-height:0}
+/* Keep roster portraits inside their own row, clear of names and prices. */
+#deck-picker .deck-card .avatar-window .deck-portrait{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:contain;object-position:center;transform:none}
+#deck-picker .deck-card>strong{background:#fffc;font-size:1.08cqw;line-height:1.2;min-height:1.25em;font-weight:900;color:#230a49}
+#deck-picker .deck-card small:not(:last-child){background:#281444;color:#fff;font-size:.9cqw;min-height:2.7cqh;padding:.1cqh .1cqw;box-shadow:none;gap:.35cqw}
+#deck-picker .deck-card .cost-fons{width:1.45cqw;height:1.7cqh;transform:scale(1.35)}
+#deck-picker .deck-card .attribute-icon{width:1.2cqw;height:2cqh}
+#deck-picker .deck-card.checked::before{right:.8cqw;top:1.4cqh;background:#8b22ef url('assets/ui-icons/check.svg') center/75% no-repeat;box-shadow:none;border:2px solid #fff;width:1.45cqw;height:1.45cqw}
+#deck-picker .deck-card.previewed{filter:drop-shadow(0 0 2px #ec2bbe)}
+#deck-picker .deck-card:hover:not(:disabled){transform:translateY(-2px)}
+#deck-picker .deck-card:not(.checked):not(:disabled){filter:saturate(.55)}
+#deck-picker .reaction-preview{margin-top:.6cqh;min-height:3cqh;max-height:4.5cqh;font-size:.82cqw;gap:.3cqw;color:#35124c}
+#deck-picker .reaction-chip{border:0;border-radius:2px;background:#3d245c;color:#fff;padding:.35cqh .45cqw}
+#deck-picker .reaction-chip img{width:1cqw;height:1.8cqh}
+#deck-picker .enemy-intel{padding:0 .6cqw 1cqh;background:#ffffffb8;border:0;border-radius:0;box-shadow:none;backdrop-filter:none}
+#deck-picker .enemy-intel h3{height:5.5cqh;margin:0 -.6cqw .7cqh;font-size:0;color:transparent;background-image:url('assets/pop-ui-v1/deck-controls.png');background-repeat:no-repeat;background-size:227.27% 322.58%;background-position:94.64% 85.51%}
+#deck-picker .enemy-preview-card{border:0;border-radius:0;background:#fff;margin-bottom:1cqh;padding:.5cqh .3cqw}
+#deck-picker .enemy-preview-card img{height:11cqh}
+#deck-picker .enemy-preview-card strong{font-size:1cqw;color:#250d43}
+#deck-picker .enemy-preview-card small{font-size:.85cqw;color:#8c20ee}
+#deck-picker .enemy-intel label,#deck-picker .enemy-intel select{font-size:.9cqw;color:#371661}
+#deck-picker .enemy-intel select{border-radius:0;border-color:#8750db;padding:.75cqh .4cqw}
+#deck-picker .enemy-intel #boss-advice{font-size:.88cqw;color:#7753a4}
+#deck-picker .hero-caption{bottom:1.9cqh;left:3.4cqw;right:2.2cqw;padding:1cqh .2cqw;background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none}
+#deck-picker .hero-caption h3{font-family:'Microsoft YaHei',sans-serif;font-style:italic;font-size:3cqw;color:#210940;line-height:1.2;letter-spacing:-.05em;font-weight:1000}
+#deck-picker .hero-caption #hero-role{font-size:1.1cqw;color:#6523ba;font-weight:800}
+#deck-picker .hero-caption #hero-description{font-size:.95cqw;color:#674390;max-height:5cqh;line-height:1.5}
+#deck-picker .hero-caption #hero-attribute{background:#33105f;border-radius:3px;padding:.5cqw}
+#deck-picker .deck-bottom{background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;margin-top:.7cqh;padding:1cqh 0 0}
+#deck-picker .deck-lineup{gap:.55cqw;min-height:10cqh}
+#deck-picker .lineup-label{color:#21073e;font-size:1.03cqw}
+#deck-picker .lineup-label strong{font-size:1.75cqw;font-weight:900}
+#deck-picker .deck-slot{border:1px solid #bd96ff;border-radius:0;background:#fff;box-shadow:none;backdrop-filter:none;aspect-ratio:.85;min-height:0}
+#deck-picker .deck-slot span{font-size:.8cqw;color:#6623ac;background:#fff}
+#deck-picker .deck-slot>img{position:absolute;inset:0 0 auto;width:100%;height:calc(100% - max(10px,1cqw));min-height:0;max-width:100%;max-height:100%;object-fit:contain;object-position:center;transform:none}
+#deck-picker .deck-bottom>p{font-size:.85cqw;color:#7a519b;margin-top:.3cqh;margin-left:4.3cqw}
+#deck-picker #close-deck,#deck-picker #recommended-deck,#deck-picker #start-shift{border:0;border-radius:0;box-shadow:none;backdrop-filter:none;color:transparent;font-size:0;background-color:transparent;background-image:url('assets/pop-ui-v1/deck-controls.png');background-repeat:no-repeat;transition:filter .15s,transform .15s}
+#deck-picker #close-deck{left:1.5cqw;top:1.8cqh;width:11cqw;height:6cqh;background-size:227.27% 344.83%;background-position:5.36% 14.08%}
+#deck-picker #recommended-deck{width:9cqw;height:6.2cqh;background-size:227.27% 344.83%;background-position:94.64% 14.08%}
+#deck-picker #start-shift{width:12cqw;height:11cqh;background-size:227.27% 322.58%;background-position:5.36% 85.51%}
+#deck-picker #close-deck img,#deck-picker #start-shift img{opacity:0}
+#deck-picker #close-deck:hover,#deck-picker #recommended-deck:hover,#deck-picker #start-shift:hover{filter:brightness(1.12) saturate(1.1);transform:translateY(-2px)}
+#deck-picker button:focus-visible{outline:3px solid #00bded;outline-offset:1px}
+/* Battle HUD and cards use the same generated cut-paper materials. */
+.dashboard{left:.8%;right:.8%;top:1cqh;height:9cqh}
+.dashboard .status,.dashboard .money,.shift-clock,.dashboard .icon-button,.dashboard .square-button{border:0;border-radius:0;box-shadow:none;backdrop-filter:none;background:transparent url('assets/pop-ui-v1/battle-hud-plate.png') center/100% 100% no-repeat;transform:none}
+.dashboard .status{top:0;height:8.8cqh;padding:0 1.7cqw;gap:.4cqw}
+.dashboard .money{left:0;width:20cqw}
+.dashboard .life{left:20cqw;width:13.5cqw}
+.status .fons-image{width:3.4cqw;height:4.8cqh;transform:scale(1.6);margin-right:.5cqw}
+.status small,.status strong{font-size:clamp(12px,3.1cqh,44px);font-weight:900}
+.status small{font-size:clamp(11px,2.8cqh,39px)}
+.status.life>img{width:4.1cqh;height:4.1cqh}
+.shift-clock{top:0;left:37.4cqw;width:30cqw;height:8.8cqh;overflow:visible}
+.dashboard .battle-time{border:0;font-weight:900;font-size:clamp(12px,3cqh,44px)}
+.wave-box strong{font-size:clamp(12px,3cqh,42px);font-style:italic}
+.dashboard .battle-controls{top:0;height:8.8cqh;gap:.1cqw;transform:none}
+.dashboard .icon-button{width:7cqw;height:8.8cqh;padding:2.4cqh 2cqw}
+.dashboard .square-button{width:9.5cqw;height:8.8cqh;padding:0 1.1cqw;font-size:clamp(12px,3.1cqh,44px);gap:.25cqw}
+.dashboard .icon-button img{object-fit:contain;filter:brightness(0) invert(1)}
+.dashboard .square-button>img{width:3.8cqh;height:3.8cqh}
+.dashboard button:hover{filter:brightness(1.18)}
+.deployment{left:.8%;right:.8%;bottom:.6cqh;height:21.1cqh;gap:0;isolation:isolate}
+.deployment::before{content:'';position:absolute;left:-1cqw;right:-1cqw;top:-1.5cqh;bottom:-.6cqh;z-index:-1;background:url('assets/pop-ui-v1/battle-dock-v4.png') center bottom/100% 400% no-repeat;pointer-events:none}
+.deployment .unit-card,.deployment .tool-card{flex:0 1 8.2%;width:8.2%;height:100%;padding:1.3cqh .65cqw 1.3cqh;border:0;border-radius:0;background:transparent url('assets/pop-ui-v1/pop-card-frame-v2.png') center/100% 100% no-repeat;box-shadow:none;backdrop-filter:none;overflow:hidden}
+.deployment .unit-card .avatar-window{height:63%;width:100%;background:transparent}
+.deployment .unit-card .card-details{height:37%;background:#fff;color:#23083f;box-shadow:none}
+.deployment .card-details strong{font-size:clamp(9px,2.05cqh,30px);font-weight:900}
+.deployment .unit-card .card-cost{font-size:clamp(9px,2.5cqh,36px);color:#250f41;gap:.4cqw}
+.deployment .card-cost .cost-fons{width:2.15cqw;height:2.6cqh}
+.deployment .card-key{top:1.2cqh;left:.8cqw;background:#7619e8;color:#fff;font-size:clamp(8px,1.75cqh,25px);padding:0 .25cqw}
+.deployment .unit-card.selected{filter:drop-shadow(0 0 3px #02defc)}
+.deployment .cooldown-cover{border-radius:0;background:#24084388;inset:1.2cqh .65cqw}
+.deployment .cooldown-text{top:30%;font-size:clamp(14px,4cqh,55px)}
+.deployment .tool-card{padding:1.5cqh .8cqw;grid-template-rows:68% 32%}
+.deployment .tool-art{border:0;border-radius:0;background:#230950;box-shadow:none}
+.deployment .tool-caption{background:#230950;text-shadow:none;gap:.3cqw}
+.deployment .tool-caption strong,.deployment .tool-caption small{font-size:clamp(10px,2.65cqh,38px);font-weight:900}
+.deployment .tool-card canvas{filter:saturate(1.12)}
+.deployment .tool-card .tool-symbol{filter:none}
+.stage-hint,.toast{bottom:23cqh}
+.reduce-motion #deck-picker button{transition:none}
+
+#deck-picker #close-deck{background-size:206.1176470588235% 263.8235294117647%;background-position:2.2172949002217295% 15.260323159784562%}
+#deck-picker #recommended-deck{background-size:207.33727810650885% 236.05263157894737%;background-position:99.7794928335171% 13.539651837524177%}
+#deck-picker #start-shift{background-size:204.9122807017544% 206.20689655172413%;background-position:2.229654403567447% 96.96969696969697%}
+#deck-picker .enemy-intel h3{background-size:209.8203592814371% 222.02970297029702%;background-position:98.69138495092693% 91.27789046653145%}
+.dashboard .status,.dashboard .money,.shift-clock,.dashboard .icon-button,.dashboard .square-button{background-size:100% 150%;background-position:center 48%}
+/* Preserve the multicolor help icon and leave inset space inside the cut HUD. */
+.dashboard .icon-button img{filter:none}
+.shift-clock{padding:0 1.7cqw}
+#deck-picker #close-deck{height:8cqh;width:12cqw;top:1cqh}
+#deck-picker #recommended-deck{height:8cqh;width:10cqw}
+#deck-picker .enemy-intel h3{height:7.1cqh;margin-top:-.8cqh;margin-bottom:0}
+#deck-picker #start-shift{height:12cqh}
+#deck-picker #deck-hero-echo{top:-9%;height:54%;object-position:center top;opacity:.18}
+#deck-picker .hero-caption{top:84%;bottom:2%;left:3.4cqw;right:5.5cqw;padding:.5cqh 0}
+#deck-picker .hero-caption h3{font-size:2.8cqw;line-height:1.1}
+#deck-picker .hero-caption #hero-role{font-size:1cqw;line-height:1.2;margin:.4cqh 0}
+#deck-picker .hero-caption #hero-description{font-size:.8cqw;line-height:1.45;max-height:4.2cqh}
+/* Reserve a clean, full-width reading area below the portrait. */
+#deck-picker .hero-caption{top:81.5%;bottom:1.8%;left:3.4cqw;right:3cqw;padding:.5cqh 0}
+#deck-picker .hero-caption h3{font-size:2.6cqw;line-height:1.1}
+#deck-picker .hero-caption #hero-role{font-size:.95cqw;line-height:1.2;margin:.35cqh 0}
+#deck-picker .hero-caption #hero-description{font-size:.78cqw;line-height:1.4;max-height:none;overflow:visible}
+#deck-picker .deck-card{filter:drop-shadow(0 .3cqh .25cqh #29094b26)}
+#deck-picker .deck-card:not(.checked):not(:disabled){filter:saturate(.65) drop-shadow(0 .3cqh .25cqh #29094b26)}
+#deck-picker .deck-card.previewed{filter:drop-shadow(0 0 2px #ec2bbe) drop-shadow(0 .3cqh .25cqh #29094b26)}
+#deck-picker .deck-card:disabled{filter:grayscale(.7) drop-shadow(0 .3cqh .25cqh #29094b26)}
+/* Separate the enemy preview and boss selection into the generated white panel. */
+#deck-picker .enemy-intel{position:relative;isolation:isolate;background:none;border:0;padding:8.8cqh 1cqw 2cqh;overflow:visible}
+#deck-picker .enemy-intel::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/pop-ui-v1/enemy-intel-panel.png') center/100% 100% no-repeat;filter:drop-shadow(.18cqw .4cqh .3cqh #28094238)}
+#deck-picker .enemy-intel h3{position:absolute;top:0;left:0;margin:0;width:100%;height:7cqh;opacity:0}
+#deck-picker #enemy-preview{height:18cqh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#b989ed #fff;overscroll-behavior:contain}
+#deck-picker .enemy-preview-card{padding:0;margin:0 0 .6cqh;background:none}
+#deck-picker .enemy-preview-card img{height:11.5cqh}
+#deck-picker .enemy-intel #boss-choice-wrap{margin:1.5cqh 0 1cqh}
+#deck-picker .enemy-intel #boss-advice{max-height:24cqh;overflow-y:auto;scrollbar-width:thin}
+/* The hollow foreground frame encloses live content instead of sitting behind it. */
+.deployment .unit-card,.deployment .tool-card{position:relative;padding:0;background:none;isolation:isolate}
+.deployment .unit-card::after,.deployment .tool-card::after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:url('assets/pop-ui-v1/pop-card-overlay-v4.png') center/100% 100% no-repeat}
+.deployment .unit-card .avatar-window,.deployment .unit-card .card-details,.deployment .tool-art,.deployment .tool-caption{position:absolute;left:12%;right:12%;width:76%;margin:0;border:0;box-shadow:none}
+.deployment .unit-card .avatar-window{left:10%;right:10%;width:80%;top:8.5%;height:52.5%;background:#fff;overflow:hidden}
+.deployment .unit-card .card-details{left:10%;right:10%;width:80%;top:61%;height:30%;background:#fff}
+.deployment .unit-card .card-cost{font-size:clamp(9px,2.3cqh,34px);gap:.25cqw}
+.deployment .card-key{top:11%;left:14%;z-index:5;font-size:clamp(8px,1.6cqh,24px)}
+.deployment .cooldown-cover{inset:auto 10% 9%;z-index:2;transform:scaleY(.825);transform-origin:center bottom}
+.deployment .cooldown-text{z-index:4;top:32%}
+.deployment .tool-art{top:9%;height:60%;background:#230950}
+.deployment .tool-caption{top:69%;height:22%;background:#230950;gap:.2cqw}
+.deployment .tool-caption strong,.deployment .tool-caption small{font-size:clamp(9px,2.35cqh,34px)}
+.deployment #jelly-cooldown{z-index:5;top:11%;right:14%}
+.deployment .tool-card::after{z-index:0;background-image:url('assets/pop-ui-v1/pop-tool-card-v4.png')}
+.deployment .tool-art{z-index:1;top:12%;height:57%;background:transparent}
+.deployment .tool-caption{z-index:1;top:76%;height:13%;background:transparent}

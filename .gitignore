@@ -1,0 +1,11 @@
+node_modules/
+dist/
+android/build/
+*.jks
+*.keystore
+*.apk
+*.aab
+local.properties
+private-signing/
+qa/
+*.log

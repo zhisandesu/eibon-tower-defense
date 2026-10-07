@@ -1,0 +1,14 @@
+/* Focus follows the illustrated controls without outlining their rectangular hit areas. */
+:root body :focus {
+  outline: none !important;
+}
+
+:root body .status.money:has(#collect-button:focus-visible) {
+  outline: none !important;
+  filter: brightness(1.12);
+}
+
+/* Keep keyboard feedback on the control itself; selection and active states are unchanged. */
+:root body :is(button, a, input, select):focus-visible {
+  filter: brightness(1.12);
+}

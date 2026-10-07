@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {randomBytes} from 'node:crypto';
+const root=path.resolve('.'),build=path.resolve(process.env.EIBON_ANDROID_BUILD_DIR||'android/build');
+const sdk=process.env.ANDROID_HOME,jdk=process.env.JAVA_HOME,signDir=process.env.EIBON_SIGNING_DIR;
+if(!sdk||!jdk||!signDir)throw Error('Set ANDROID_HOME, JAVA_HOME and private EIBON_SIGNING_DIR (outside the repository).');
+if(path.resolve(signDir).startsWith(root+path.sep))throw Error('Signing files must remain outside the repository');
+const sdkTools=path.join(sdk,'build-tools/35.0.0'),androidJar=path.join(sdk,'platforms/android-35/android.jar');
+const run=(exe,args,options={})=>execFileSync(exe,args,{stdio:'inherit',...options});
+const java=name=>path.join(jdk,'bin/'+name+'.exe');
+await fs.mkdir(build,{recursive:true});await fs.mkdir(path.join(build,'res/drawable'),{recursive:true});await fs.mkdir(path.join(build,'assets/game'),{recursive:true});await fs.mkdir(path.join(build,'classes'),{recursive:true});await fs.mkdir(path.join(build,'dex'),{recursive:true});await fs.mkdir('dist',{recursive:true});
+await fs.copyFile('game/assets/game-icon-v02-180.png',path.join(build,'res/drawable/game_icon.png'));
+await fs.cp('game',path.join(build,'assets/game'),{recursive:true});
+await fs.copyFile('android/AndroidManifest.xml',path.join(build,'AndroidManifest.xml'));
+run(path.join(sdkTools,'aapt2.exe'),['compile','--dir',path.join(build,'res'),'-o',path.join(build,'res.zip')]);
+run(path.join(sdkTools,'aapt2.exe'),['link','-o',path.join(build,'unsigned.apk'),'--manifest',path.join(build,'AndroidManifest.xml'),'-I',androidJar,'-A',path.join(build,'assets'),'--auto-add-overlay',path.join(build,'res.zip')]);
+run(java('javac'),['-encoding','UTF-8','--release','8','-classpath',androidJar,'-d',path.join(build,'classes'),path.join(root,'android/src/site/zhisan/eibon/MainActivity.java')]);
+run(java('jar'),['--create','--file',path.join(build,'classes.jar'),'-C',path.join(build,'classes'),'.']);
+run(java('java'),['-cp',path.join(sdkTools,'lib/d8.jar'),'com.android.tools.r8.D8','--release','--min-api','28','--lib',androidJar,'--output',path.join(build,'dex'),path.join(build,'classes.jar')]);
+run(java('jar'),['--update','--file',path.join(build,'unsigned.apk'),'-C',path.join(build,'dex'),'classes.dex']);
+run(path.join(sdkTools,'zipalign.exe'),['-f','-p','4',path.join(build,'unsigned.apk'),path.join(build,'aligned.apk')]);
+await fs.mkdir(signDir,{recursive:true});const credentials=path.join(signDir,'credentials.json');let secret;
+try{secret=JSON.parse(await fs.readFile(credentials,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;secret={alias:'eibon-release',password:randomBytes(32).toString('hex')};await fs.writeFile(credentials,JSON.stringify(secret),{mode:0o600});}
+const keystore=path.join(signDir,'eibon-release.jks'),env={...process.env,EIBON_STORE_PASS:secret.password};
+try{await fs.access(keystore);}catch{run(java('keytool'),['-genkeypair','-keystore',keystore,'-alias',secret.alias,'-storepass:env','EIBON_STORE_PASS','-keypass:env','EIBON_STORE_PASS','-keyalg','RSA','-keysize','4096','-validity','10000','-dname','CN=Zhisan Eibon, O=Zhisan, C=CN'],{env});}
+const apk=path.join(build,'Eibon-Tower-Defense-3.0.0-Android.apk');
+run(java('java'),['-jar',path.join(sdkTools,'lib/apksigner.jar'),'sign','--ks',keystore,'--ks-key-alias',secret.alias,'--ks-pass','env:EIBON_STORE_PASS','--key-pass','env:EIBON_STORE_PASS','--out',apk,path.join(build,'aligned.apk')],{env});
+run(java('java'),['-jar',path.join(sdkTools,'lib/apksigner.jar'),'verify','--verbose','--print-certs',apk]);
+run(path.join(sdkTools,'aapt2.exe'),['dump','badging',apk]);
+await fs.copyFile(apk,path.join(root,'dist/Eibon-Tower-Defense-3.0.0-Android.apk'));
+console.log(JSON.stringify({apk,bytes:(await fs.stat(apk)).size}));

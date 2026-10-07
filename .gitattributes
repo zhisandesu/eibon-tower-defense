@@ -1,0 +1,13 @@
+* text=auto eol=lf
+# Preserve runtime bytes exactly: runtime-manifest.json checks their hashes.
+/game/** -text
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp3 binary
+*.ogg binary
+*.mp4 binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.ico binary
