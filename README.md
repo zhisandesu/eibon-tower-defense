@@ -16,10 +16,14 @@
 | --- | --- | --- |
 | Windows 64 位 | [安装版 EXE](https://github.com/zhisandesu/eibon-tower-defense/releases/download/v3.0.0/Eibon-Tower-Defense-3.0.0-Windows-Setup.exe) | 下载后安装，桌面快捷方式启动 |
 | Windows 64 位 | [免安装 ZIP](https://github.com/zhisandesu/eibon-tower-defense/releases/download/v3.0.0/Eibon-Tower-Defense-3.0.0-Windows-x64.zip) | 完整解压，运行“异象大战伊波恩.exe” |
-| Android 9 及以上 | [安卓 APK](https://github.com/zhisandesu/eibon-tower-defense/releases/download/v3.0.0/Eibon-Tower-Defense-3.0.0-Android.apk) | 安装后横屏游玩，支持触屏拖放 |
+| Android 9 及以上 | [安卓 APK · 3.0.1 安装修复版](https://github.com/zhisandesu/eibon-tower-defense/releases/download/v3.0.0/Eibon-Tower-Defense-3.0.1-Android.apk) | 安装后横屏游玩，支持触屏拖放 |
 | Wallpaper Engine | [壁纸项目 ZIP](https://github.com/zhisandesu/eibon-tower-defense/releases/download/v3.0.0/Eibon-Tower-Defense-3.0.0-WallpaperEngine.zip) | 完整解压，在壁纸编辑器导入 index.html，开启鼠标交互 |
 
-下载包内置画面、音乐和动画，首次启动也不需要联网。Windows、安卓、网页和壁纸版分别在本机保存进度，存档不会跨平台同步。Windows 包暂未使用商业代码签名。安卓包已签名，但本次没有进行实体手机测试。
+下载包内置画面、音乐和动画，首次启动也不需要联网。Windows、安卓、网页和壁纸版分别在本机保存进度，存档不会跨平台同步。Windows 包暂未使用商业代码签名，安卓包使用原发行密钥签名。
+
+安卓 3.0.1 修复了旧 APK 的资源索引压缩错误，解决 Android 11 及以上拒绝安装的问题。游戏内容仍为 3.0；请重新下载新版 APK。包名与签名保持一致，已安装的版本可以直接覆盖更新并保留进度。
+
+安卓需要 Android 9+，系统 WebView 内核为 Chromium 80 或更新版本；旧手机请先在应用商店更新 Android 系统 WebView 或 Chrome。已在 Android 11 模拟器完成旧包拒装、新包安装、启动、编队、进入战斗与触屏部署测试，尚未进行实体手机测试。
 
 ## 可以怎么玩
 

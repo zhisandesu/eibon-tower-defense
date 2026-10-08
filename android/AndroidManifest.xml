@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="site.zhisan.eibon" android:versionCode="30000" android:versionName="3.0.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="site.zhisan.eibon" android:versionCode="30001" android:versionName="3.0.1">
   <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35" />
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
   <application android:label="异象大战伊波恩" android:icon="@drawable/game_icon" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="true" android:usesCleartextTraffic="false" android:hardwareAccelerated="true" android:supportsRtl="true">

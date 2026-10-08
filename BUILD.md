@@ -34,11 +34,21 @@ $env:EIBON_SIGNING_DIR='C:\Private\eibon-signing'
 npm run build:android
 ```
 
-脚本编译离线 WebView 外壳，打包 game 内的资源，对 APK 进行对齐、签名和签名校验。最低 Android 9，目标 API 35，包名 site.zhisan.eibon，版本 3.0.0 / 30000。
+脚本编译离线 WebView 外壳，打包 game 内的资源，对 APK 进行对齐、签名和签名校验。最低 Android 9，目标 API 35，包名 site.zhisan.eibon，安卓外壳版本 3.0.1 / 30001；游戏内容与其他平台仍为 3.0。
+
+NormalizeApk.java 将 Windows 资源路径转换为正斜杠，并以 ZIP STORED（方法 0）写入 resources.arsc，再执行 zipalign。不能用 .NET Framework 的 CompressionLevel.NoCompression 代替 STORED：它仍会产生 DEFLATED（方法 8）条目，导致 Android 11+ 拒绝安装。构建结束会检查签名 APK 内资源索引的真实压缩方法和 4 字节对齐、所有条目的 CRC 与 357 个运行文件的 SHA-256；失败则不输出发布包。
+
+也可单独校验已打包文件：
+
+```powershell
+node tools/verify-android.mjs dist/Eibon-Tower-Defense-3.0.1-Android.apk
+```
 
 签名目录必须位于仓库之外。首次构建会创建私人密钥，后续升级必须保留并复用同一份密钥和 credentials.json。不要上传这些文件。不同密钥构建的 APK 无法覆盖安装原来的正式版本。
 
-本次发行完成了签名校验、资源校验和浏览器触屏事件检查，尚未进行实体安卓设备安装测试。
+安卓构建还会将 33 个脚本和样式转换为 Chromium 80+ 可用的版本，补充 Array.at、replaceChildren、Canvas roundRect、容器尺寸与卡片比例兼容处理。game 目录保持原始 3.0 快照；APK 校验对这些文件计算转换后的预期哈希，其余素材直接与源清单比对。旧设备需更新系统 WebView 或 Chrome。
+
+已在 Android 11 官方模拟器复现旧 APK 安装失败（错误 -124），确认修复包安装成功并完成启动、编队、进入战斗与触屏拖放部署；运行日志未出现脚本异常。同时完成签名、全部资源及浏览器触屏事件检查。尚未进行实体安卓设备安装测试。
 
 ## Wallpaper Engine
 
